@@ -6,13 +6,13 @@ class AvaAnalytic:
         """Searches all DataNodes for a specific keyword."""
         print(f"🔍 Searching DFS for: '{keyword}'...")
         results = []
-        
+
         # 1. Get list of files from Metadata
         for filename, metadata in self.engine.metadata.file_table.items():
             # 2. Retrieve data from the assigned node
             node_id = metadata['node']
             content = self.engine.nodes[node_id].read_block(filename)
-            
+
             # 3. Analyze content
             if keyword.lower() in content.lower():
                 results.append({
@@ -20,7 +20,7 @@ class AvaAnalytic:
                     "node": node_id,
                     "preview": content[:50] + "..."
                 })
-        
+
         return results
 
 # --- Local Component Test ---
@@ -30,7 +30,7 @@ if __name__ == "__main__":
     test_engine = AvaEngine()
     test_engine.add_node("node_1")
     test_engine.ingest_data("log.txt", "CRITICAL ERROR: Memory leak detected in DFS block 4.")
-    
+
     analyzer = AvaAnalytic(test_engine)
     found = analyzer.find_keyword("CRITICAL")
     print(f"Results: {found}")
