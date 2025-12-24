@@ -1,0 +1,13 @@
+{
+    "project_id": "gasm-481006",
+    "credits_total": 1296.86,
+    "nodes": [
+        "alpha",
+        "beta",
+        "gamma",
+        "delta",
+        "epsilon"
+    ],
+    "replication_factor": 3,
+    "last_audit_timestamp": "2025-12-23"
+}
